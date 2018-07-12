@@ -1,5 +1,5 @@
 // Author: FirstName LastName
-var readline = require("readline-sync");
+let readline = require("readline-sync");
 
 console.log();
 console.log("*****************************************************************");
@@ -8,12 +8,26 @@ console.log("                 A game by FirstName LastName");
 console.log("*****************************************************************");
 console.log("You are standing in front of a spooky haunted house.");
 console.log("You hear what sounds like screaming coming from inside the house.");
-var enterHouse = readline.question("Will you enter the house? (yes or no) ");
+let enterHouse = readline.question("Will you enter the house? (yes or no) ");
 if(enterHouse == "y" || enterHouse == "yes") {
-  // your code here
-
+let yes = readline.question("A giant headless chicken appears🐓. What would you do?(punch, befriend or run away )");
+if(yes =="punch" || yes =="p" ){
+  console.log("You aimed for the head.You then realized it has no head, You Died☠️");
+}
+else{
+  if(yes =="run away" || yes =="r"){
+    console.log("You ran away from a chicken. What are you a coward??");
+  }
+  else{
+    if(yes == "befriend" || yes == "b"){
+    console.log("The chicken has no friends only enemies❗️❗️🐓");
+  }
+  }
+}
 } else {
-  // your code here
+  if (enterHouse !=="y" || enterHouse !=="yes") {
+    console.log("What are you a chicken??🐓");
+  }
 
 }
 console.log("Thanks for playing!");
