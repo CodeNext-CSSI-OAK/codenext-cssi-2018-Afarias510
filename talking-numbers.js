@@ -1,4 +1,3 @@
-// Author: FirstName LastName
 var readline = require("readline-sync");
 
 /******************************************************************************
@@ -9,9 +8,13 @@ var readline = require("readline-sync");
 *******************************************************************************/
 
 function printGreeting() {
+  console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
+  console.log("                       By: Antonio Farias");
+  console.log("                                                                    ");
+  console.log("                        Enjoy :-).\n");
+  console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 
 }
-
 /******************************************************************************
   This function takes a number between 1 and 9 (inclusive) as input and returns
   that same number in word form. If the number is not between 1 and 9, the
@@ -23,9 +26,28 @@ function printGreeting() {
   sayZeroNine(13) → ""
 *******************************************************************************/
 function sayZeroNine(num) {
-
+  if(num < 1 || num > 9) {
+    return "";
+  } else if (1 === num) {
+    return "one";
+  } else if (2 === num) {
+    return "two";
+  } else if (3 === num) {
+    return "three";
+  } else if (4 === num) {
+    return "four";
+  } else if (5 === num) {
+    return "five";
+  } else if (6 === num) {
+    return "six";
+  } else if (7 === num) {
+    return "seven";
+  } else if (8 === num) {
+    return "eight";
+  } else {
+    return "nine";
+  }
 }
-
 /******************************************************************************
   This function takes a number between 10 and 19 (inclusive) as input and returns
   that same number in word form. If the number is not between 10 and 19, the
@@ -37,7 +59,29 @@ function sayZeroNine(num) {
   sayTenNineteen(25) → ""
 *******************************************************************************/
 function sayTenNineteen(num) {
-
+  if(num < 10 || num > 19) {
+    return "";
+  } else if (10 === num) {
+    return "ten";
+  } else if (11 === num) {
+    return "eleven";
+  } else if (12 === num) {
+    return "twelve";
+  } else if (13 === num) {
+    return "thirteen";
+  } else if (14 === num) {
+    return "fourteen";
+  } else if (15 === num) {
+    return "fifteen";
+  } else if (16 === num) {
+    return "sixteen";
+  } else if (17 === num) {
+    return "seventeen";
+  } else if (18 === num) {
+    return "eightteen";
+  } else {
+    return "nineteen";
+  }
 }
 
 /******************************************************************************
@@ -51,7 +95,25 @@ function sayTenNineteen(num) {
   sayTwentyNinety(1) → ""
 *******************************************************************************/
 function sayTwentyNinety(num) {
-
+  if (num <= 1 || num >= 10) {
+    return ""
+  } else if (20 === num) {
+    return "twenty";
+  } else if (30 === num) {
+    return "thirty";
+  } else if (40 === num) {
+    return "fourty";
+  } else if (50 === num) {
+    return "fifty";
+  } else if (60 === num) {
+    return "sixty"
+  } else if (70 === num) {
+    return "seventy";
+  } else if (80 === num) {
+    return "eighty";
+  } else {
+    return "ninety";
+  }
 }
 
 /******************************************************************************
@@ -78,6 +140,33 @@ function sayTwentyNinety(num) {
   sayNumber(75) → "seventy-five"
 *******************************************************************************/
 function sayNumber(num) {
+  let wordForm = "";
+  if (num === 0) {
+    wordForm = "zero";
+  } else {
+    let thousandsNum = Math.floor(num / 1000);
+    let thousandsStringNum = sayZeroNine(thousandsNum) + "-thousand";
+    let hundredsNum = Math.floor((num % 1000) / 100);
+    let hundredsStringNum = sayZeroNine(hundredsNum) + "-hundred";
+    let tensNum = Math.floor((num % 100) / 10);
+    let tensStringsNum = sayTwentyNinety(tensNum);
+    let onesNum = Math.floor(num % 10);
+    let onesStringsNum = sayZeroNine(onesNum);
+
+    if(thousandsNum > 0) {
+      wordForm += thousandsStringNum + " ";
+    }
+    if(hundredsNum > 0) {
+      wordForm += hundredsStringNum + " ";
+    }
+    if(tensNum !== 0) {
+      wordForm += tensStringsNum + "-";
+    }
+    if(onesNum !== 0) {
+      wordForm += onesStringsNum + " ";
+    }
+  }
+  return wordForm;
 
 }
 
@@ -87,7 +176,9 @@ function sayNumber(num) {
   number in word form.
 *******************************************************************************/
 function run() {
-
+  printGreeting();
+  let enterNumber = Number(readline.question("Please enter any number between 0 to 9999: "));
+  console.log("Word form: " + sayNumber(enterNumber));
 }
 
 // Run the program!
